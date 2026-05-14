@@ -95,7 +95,7 @@ The client directory is a placeholder structure at this time. If you add a React
 
 - `server/index.js` currently contains a health check route and connects to MongoDB.
 - API route imports for products, users, and carts are currently commented out and can be enabled once those routes are implemented.
-- The `seed.js` script uses `amazon_clone` as the default MongoDB database name if no `MONGODB_URI` is provided.
+- The `seed.js` script uses `ecommerce` as the default MongoDB database name if no `MONGODB_URI` is provided.
 
 ## Next Steps
 
