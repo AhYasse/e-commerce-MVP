@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 const connectDB = async () => {
   try {
     // Simply remove the options object completely
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/e-commerce');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ecommerce');
     console.log('MongoDB Connected Successfully');
   } catch (error) {
     console.error('MongoDB Connection Error:', error.message);

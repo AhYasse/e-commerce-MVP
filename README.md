@@ -14,6 +14,10 @@ This repository is structured for an e-commerce MVP with:
 ### Backend
 - Express server with CORS and JSON body parsing
 - MongoDB connection via Mongoose
+- `Product` model with category, price, stock, rating, and image fields
+- `User` model with hashed password support and role-based field setup
+- `Cart` model with calculated total price and cart-item relation to products
+- Seed script to populate sample products and an admin user
 - Health check endpoint: `/api/health`
 
 ### Front End
@@ -54,7 +58,7 @@ npm install
 2. Create a `.env` file in `server/` with the following values:
 
 ```env
-MONGODB_URI=mongodb://localhost:27017/e-commerce
+MONGODB_URI=mongodb://localhost:27017/ecommerce
 PORT=5000
 ```
 
@@ -70,9 +74,31 @@ npm run dev
 curl http://localhost:5000/api/health
 ```
 
+### Seed the Database
+
+To load sample products and create an admin user:
+
+```bash
+cd server
+npm run seed
+```
+
+Default admin credentials:
+- Email: `admin@example.com`
+- Password: `admin123`
+
+### Client Setup
+
+The client directory is a placeholder structure at this time. If you add a React app or other frontend framework, install dependencies there and create your entrypoint.
+
+## Notes
+
+- `server/index.js` currently contains a health check route and connects to MongoDB.
+- API route imports for products, users, and carts are currently commented out and can be enabled once those routes are implemented.
+- The `seed.js` script uses `amazon_clone` as the default MongoDB database name if no `MONGODB_URI` is provided.
+
 ## Next Steps
-- Implement Product , User, Cart models
-- Seed the Database
+
 - Implement backend route files under `server/routes/`
 - Add frontend app code to `client/src/`
 - Add authentication, product listing, cart management, and checkout flows
