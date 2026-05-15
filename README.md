@@ -19,6 +19,20 @@ This repository is structured for an e-commerce MVP with:
 - `Cart` model with calculated total price and cart-item relation to products
 - Seed script to populate sample products and an admin user
 - Health check endpoint: `/api/health`
+- User routes: `/api/users/register`, `/api/users/login`, `/api/users/profile`
+
+### API Endpoints
+
+- `GET /api/health` — status check
+- `POST /api/users/register` — register a new user
+- `POST /api/users/login` — authenticate a user and return a JWT
+- `GET /api/users/profile` — get authenticated user profile
+- `PUT /api/users/profile` — update authenticated user profile
+- `GET /api/products` — list products with pagination and filters
+- `GET /api/products/:id` — get product details
+- `POST /api/products` — create a product (admin only)
+- `PUT /api/products/:id` — update a product (admin only)
+- `DELETE /api/products/:id` — delete a product (admin only)
 
 ### Front End
 - Skeleton folder layout under `client/src/`
@@ -59,6 +73,7 @@ npm install
 
 ```env
 MONGODB_URI=mongodb://localhost:27017/ecommerce
+JWT_SECRET=your_jwt_secret_here
 PORT=5000
 ```
 
@@ -94,14 +109,15 @@ The client directory is a placeholder structure at this time. If you add a React
 ## Notes
 
 - `server/index.js` currently contains a health check route and connects to MongoDB.
-- API route imports for products, users, and carts are currently commented out and can be enabled once those routes are implemented.
+- Product and user routes are enabled in `server/index.js`; cart routes are currently commented out and can be enabled after implementing or wiring the cart API.
+- The `server/models/Cart.js` model exists, but cart API routes are not currently registered.
 - The `seed.js` script uses `ecommerce` as the default MongoDB database name if no `MONGODB_URI` is provided.
 
 ## Next Steps
 
-- Implement backend route files under `server/routes/`
-- Add frontend app code to `client/src/`
-- Add authentication, product listing, cart management, and checkout flows
+- Expand backend functionality with cart/order routes and complete the cart API
+- Add frontend app code under `client/src/` for product listing, auth, cart, and checkout
+- Add API documentation, request examples, and end-to-end tests for auth/products/cart
 
 ## Contact
 
