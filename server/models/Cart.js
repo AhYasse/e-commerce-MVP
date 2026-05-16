@@ -32,9 +32,9 @@ const cartSchema = new mongoose.Schema({
 });
 
 // Calculate total price before saving
-cartSchema.pre('save', async function(next) {
+cartSchema.pre('save', async function() {
   
-  if (!this.isModified('items')) return next();
+  if (!this.isModified('items')) return;
 
   const productIds = this.items.map(item => item.product);
   const products = await mongoose.model('Product').find({ _id: { $in: productIds } });
@@ -49,7 +49,6 @@ cartSchema.pre('save', async function(next) {
   });
 
   this.totalPrice = total;
-  next();
 });
 
 let Cart = mongoose.model('Cart', cartSchema);

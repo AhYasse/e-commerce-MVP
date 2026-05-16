@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 // Import routes (we'll create these)
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-// import cartRoutes from './routes/cartRoutes.js';    
+import cartRoutes from './routes/cartRoutes.js';    
 
 // Load environment variables
 dotenv.config();
@@ -40,7 +40,7 @@ app.get('/api/health', (req, res) => {
 // Use routes
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
-// app.use('/api/cart', cartRoutes);
+app.use('/api/cart', cartRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

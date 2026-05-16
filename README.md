@@ -20,6 +20,7 @@ This repository is structured for an e-commerce MVP with:
 - Seed script to populate sample products and an admin user
 - Health check endpoint: `/api/health`
 - User routes: `/api/users/register`, `/api/users/login`, `/api/users/profile`
+- Cart routes: `/api/cart` with authenticated item management
 
 ### API Endpoints
 
@@ -33,6 +34,11 @@ This repository is structured for an e-commerce MVP with:
 - `POST /api/products` — create a product (admin only)
 - `PUT /api/products/:id` — update a product (admin only)
 - `DELETE /api/products/:id` — delete a product (admin only)
+- `GET /api/cart` — get authenticated user cart
+- `POST /api/cart` — add an item to the authenticated user cart
+- `DELETE /api/cart` — clear the authenticated user cart
+- `PUT /api/cart/:productId` — update quantity for a cart item
+- `DELETE /api/cart/:productId` — remove a cart item
 
 ### Front End
 - Skeleton folder layout under `client/src/`
@@ -109,13 +115,13 @@ The client directory is a placeholder structure at this time. If you add a React
 ## Notes
 
 - `server/index.js` currently contains a health check route and connects to MongoDB.
-- Product and user routes are enabled in `server/index.js`; cart routes are currently commented out and can be enabled after implementing or wiring the cart API.
-- The `server/models/Cart.js` model exists, but cart API routes are not currently registered.
+- Product, user, and cart routes are enabled in `server/index.js`.
+- Cart routes are protected and require an authenticated Bearer token.
 - The `seed.js` script uses `ecommerce` as the default MongoDB database name if no `MONGODB_URI` is provided.
 
 ## Next Steps
 
-- Expand backend functionality with cart/order routes and complete the cart API
+- Complete backend functionality, including cart/order flow, checkout, and persistence
 - Add frontend app code under `client/src/` for product listing, auth, cart, and checkout
 - Add API documentation, request examples, and end-to-end tests for auth/products/cart
 
